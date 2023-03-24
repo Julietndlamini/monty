@@ -22,7 +22,7 @@ void read_file(char *filename, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&var_global.buffer, &i, var_global.file)) != -1)
+while ((read = getline(&var_global.buffer, &i, var_global.file)) != -1)
 	{
 		line = parse_line(var_global.buffer, stack, line_count);
 		if (line == NULL || line[0] == '#')
@@ -117,26 +117,26 @@ int isnumber(char *str)
  */
 char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 {
-char *op_code, *push, *arg;
-(void)stack;
+	char *op_code, *push, *arg;
+	(void)stack;
 
-push = "push";
-op_code = strtok(line, "\n ");
-if (op_code == NULL)
-return (NULL);
+	push = "push";
+	op_code = strtok(line, "\n ");
+	if (op_code == NULL)
+		return (NULL);
 
-if (strcmp(op_code, push) == 0)
-{
-arg = strtok(NULL, "\n ");
-if (isnumber(arg) == 1 && arg != NULL)
-{
-var_global.push_arg = atoi(arg);
-}
-else
-{
-fprintf(stderr, "L%d: usage: push integer\n", line_number);
-exit(EXIT_FAILURE);
-}
-}
-return (op_code);
+	if (strcmp(op_code, push) == 0)
+	{
+		arg = strtok(NULL, "\n ");
+		if (isnumber(arg) == 1 && arg != NULL)
+		{
+			var_global.push_arg = atoi(arg);
+		}
+		else
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
+	return (op_code);
 }

@@ -1,1 +1,1 @@
-0x19. C - Stacks, Queues - LIFO, FIIO all task
+0x19. C - Stacks, Queues - LIFO, FIFO
